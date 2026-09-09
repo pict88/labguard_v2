@@ -15,7 +15,7 @@ echo "Moving script.sh to /etc/NetworkManager/dispatcher.d/"
 mv script.sh /etc/NetworkManager/dispatcher.d/
 
 echo "Moving enable-lab.sh disable-lab.sh recovery.sh to /usr/local/bin/"
-mv enable-lab.sh disable-lab.sh recovery.sh /usr/local/bin/
+mv enable-lab.sh disable-lab.sh recovery.sh usb-auth.sh /usr/local/bin/
 
 echo "Moving lab-config.env to /etc/"
 mv lab-config.env /etc/
