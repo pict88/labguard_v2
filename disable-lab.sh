@@ -1,5 +1,17 @@
 #!/bin/bash
 
+TARGET_HASH="2e4fecd347583f282eb459bf3ecc0367d5d680cc0d81286a9110acc558fd5b19"
+
+read -s -p "Enter password: " USER_INPUT
+echo ""
+
+INPUT_HASH=$(echo -n "$USER_INPUT" | sha256sum | awk '{print $1}')
+
+if [ "$INPUT_HASH" != "$TARGET_HASH" ]; then
+    echo "[-] Access Denied: Incorrect password."
+    exit 1
+fi
+
 if [ -f /etc/lab-config.env ]; then
     source /etc/lab-config.env
 else
