@@ -1,7 +1,7 @@
 #!/bin/bash
 #sudo bash -c "while true; do /home/exam/Desktop/SERVER/ping_monitor.sh; sleep 5; done"
 
-DB_HOST="127.0.0.1"
+DB_HOST="localhost"
 DB_USER="exam"
 DB_PASS="exam"
 DB_NAME="Labguard"
