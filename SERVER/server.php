@@ -26,7 +26,7 @@ $rawStatus = $_POST['status'] ?? '';
 $device    = $_POST['device'] ?? '';
 $ip        = $_POST['ip'] ?? $_SERVER['REMOTE_ADDR'];
 
-$conn = @mysqli_connect('127.0.0.1', 'exam', 'exam', 'Labguard');
+$conn = @mysqli_connect('localhost', 'exam', 'exam', 'Labguard');
 if (!$conn) {
     $conn = @mysqli_connect('localhost', 'exam', 'exam', 'Labguard');
 }
