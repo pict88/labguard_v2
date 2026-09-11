@@ -1,5 +1,6 @@
 #!/bin/bash
 #sudo bash -c "while true; do /home/exam/Desktop/SERVER/ping_monitor.sh; sleep 5; done"
+#sudo nohup bash -c "while true; do /home/kali/Desktop/SERVER/ping_monitor.sh; sleep 5; done" > /dev/null 2>&1 &
 
 DB_HOST="localhost"
 DB_USER="exam"
