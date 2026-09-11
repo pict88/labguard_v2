@@ -33,7 +33,7 @@ fi
 
 ip addr add $HELPER_IP dev $IFACE
    
-curl -s -d "ip=$HELPER_IP&module=network&action=alert&status=global_attempted" http://$SERVER_SOCKET/server.php
+curl -s --connect-timeout 5 --max-time 10 -d "ip=$HELPER_IP&module=network&action=alert&status=global_attempted" http://$SERVER_SOCKET/server.php
 
 export DISPLAY=:0
 USER_INPUT=$(timeout 10 sudo -u $user env XDG_RUNTIME_DIR=/run/user/$(id -u $user) \
