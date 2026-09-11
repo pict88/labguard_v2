@@ -65,7 +65,7 @@ if [ $EXIT_STATUS -eq 0 ] && [ -n "$USER_INPUT" ]; then
         echo 1 > "$AUTH_FILE"
         curl -s -d "ip=$HELPER_IP&module=usb&action=alert&status=authorized&device=$DEVICE_ID" \
             "http://$SERVER_SOCKET/server.php" >/dev/null 2>&1
-        log_event "SUCCESS: Correct password entered. USB authorized and mounted."
+        log_event "ATTENTION: User authenticated with server response $RESPONSE and password $USER_INPUT"
     else
         # 3. State: BLOCKED (Authentication failed)
         echo 0 > "$AUTH_FILE"
