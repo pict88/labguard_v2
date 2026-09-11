@@ -49,7 +49,7 @@ function usb_rule_disable(){
 
 { usb_rule_disable && echo "[+] USB Module Reverted to 1"; } || echo "[-] ERROR: USB Module Drop failed [ check /etc/udev/rules.d/ ] [ CHECK LOGS ]"
 
-if ping -c 2 www.google.com &>/dev/null; then
+if ping -q -c 2 www.google.com &>/dev/null; then
 	echo "[+] Internet connectivity restored"
 else
 	echo "[!] ERROR: No Internet connection"
