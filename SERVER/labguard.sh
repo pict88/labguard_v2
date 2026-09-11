@@ -7,7 +7,7 @@ PING_SCRIPT="$BASE_DIR/SERVER/ping_monitor.sh"
 case "$1" in
     start)
         echo "[>] Starting mysql server"
-	sudo systemctl start mysql
+        sudo systemctl start mysql
  
         # 1. Initialize Database, User, and Tables automatically
         echo "[>] Verifying MySQL Database and User configuration..."
@@ -61,10 +61,17 @@ case "$1" in
         # Kill the PHP server
         pkill -f "php -S 0.0.0.0:8000"
         echo  "[>] Server is closed"
+        
         # Kill the ping monitor loop and script
         pkill -9 -f "ping_monitor.sh"
         echo "[>] ping monitor closed"
-	echo ""
+        
+        # Clean up temporary C2 files
+        rm -rf /tmp/labsentinel_cmds/* 2>/dev/null
+        rm -rf /tmp/labsentinel_pings/* 2>/dev/null
+        echo "[>] Cleared temporary C2 queue and heartbeat files"
+        
+        echo ""
         echo "[+] Labguard processes have stopped."
         ;;
         
