@@ -7,7 +7,7 @@ PING_SCRIPT="$BASE_DIR/SERVER/ping_monitor.sh"
 case "$1" in
     start)
         echo "[>] Starting mysql server"
-	systemctl start mysql
+	sudo systemctl start mysql
  
         # 1. Initialize Database, User, and Tables automatically
         echo "[>] Verifying MySQL Database and User configuration..."
