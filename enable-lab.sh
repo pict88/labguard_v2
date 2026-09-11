@@ -41,7 +41,7 @@ function usb_rule(){
 
 function check_usb_rule(){
 	if [ -f /etc/udev/rules.d/99-usb-enable-lab.rules ]; then
-		echo "[+] USB Rule file found !"
+		echo "[+] USB Rule file found"
 	else
 		echo "[!] ERROR: udev file not present check /etc/udev/rules.d/"
 		echo "   [>] check /etc/udev/rules.d/"
