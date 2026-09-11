@@ -32,7 +32,7 @@ log_event "ALERT: Unauthorized USB Device inserted at $SYS_PATH. Prompting for p
 # 1. State: IDLE / INSERTED (Keep blocked & alert server)
 echo 0 > "$AUTH_FILE"
 
-curl -s -d "ip=$HELPER_IP&module=usb&action=alert&status=usb_attempt&device=$DEVICE_ID" \
+curl -s --connect-timeout 5 --max-time 10 -d "ip=$HELPER_IP&module=usb&action=alert&status=usb_attempt&device=$DEVICE_ID" \
     "http://$SERVER_SOCKET/server.php" >/dev/null 2>&1
 
 sleep 1
