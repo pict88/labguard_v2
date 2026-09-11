@@ -6,14 +6,14 @@ AUTH_FILE="${SYS_PATH}/authorized"
 if [ -f /etc/lab-config.env ]; then
     source /etc/lab-config.env
 else
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] [-] CRITICAL: /etc/lab-config.env missing!" >> /home/ubuntu/Desktop/Usb.log
+    echo "[$(date)] CRITICAL: /etc/lab-config.env missing!" >> /home/ubuntu/Desktop/Usb.log
     exit 1
 fi
 
 LOG_FILE="$ERROR_LOG"
 
 log_event() {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$LOG_FILE"
+    echo "[$(date)] $1" >> "$LOG_FILE"
 }
 
 touch "$LOG_FILE"
