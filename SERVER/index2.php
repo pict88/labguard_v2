@@ -50,7 +50,6 @@ if (isset($_GET['api']) && $_GET['api'] === 'status') {
     echo json_encode($workstations);
     exit;
 }
-
 // 2. API Endpoint: Clear Session
 if (isset($_GET['api']) && $_GET['api'] === 'clear') {
     header('Content-Type: application/json');
@@ -63,6 +62,12 @@ if (isset($_GET['api']) && $_GET['api'] === 'clear') {
     
     $truncateUsb = mysqli_query($conn, "TRUNCATE TABLE usb");
     $truncateInternet = mysqli_query($conn, "TRUNCATE TABLE internet");
+    
+    // Clear the master log file
+    $logFile = '/root/Desktop/SERVER/Logs.log';
+    if (file_exists($logFile)) {
+        file_put_contents($logFile, ''); 
+    }
     
     if ($truncateUsb && $truncateInternet) {
         echo json_encode(['success' => true]);
@@ -136,7 +141,7 @@ if (isset($_GET['api']) && $_GET['api'] === 'queue_cmd' && isset($_GET['ip']) &&
 // 5. API Endpoint: New Tab Log Viewer (Data Table Version)
 if (isset($_GET['api']) && $_GET['api'] === 'logs' && isset($_GET['ip'])) {
     $requestedIp = preg_replace('/[^0-9.]/', '', $_GET['ip']); // Sanitize IP input
-    $logFile = '/home/kali/Desktop/SERVER/Logs.log';
+    $logFile = '/root/Desktop/SERVER/Logs.log';
     $filteredLogs = [];
 
     if (file_exists($logFile)) {
@@ -506,7 +511,7 @@ if (isset($_GET['api']) && $_GET['api'] === 'logs' && isset($_GET['ip'])) {
             </div>
             <div class="brand-title-group">
                 <h2>LabSentinel</h2>
-                <div style="font-size: 0.8em; color: var(--text-secondary); font-weight: 500;">Real-time Workstation & Peripherals Telemetry</div>
+                <div style="font-size: 0.8em; color: var(--text-secondary); font-weight: 500;">Real-time Workstation & Peripherals Telemetryyyy</div>
             </div>
         </div>
         <div class="system-status-badge">
